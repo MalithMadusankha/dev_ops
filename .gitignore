@@ -1,0 +1,41 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+**/.env
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Docker
+*.local
+docker-compose.override.yml
+
+# Editor folders
+.vscode/
+.idea/
+*.swp
+
+# Build artifacts
+dist/
+build/
+coverage/
+*.tgz
+
+# Optional cache
+.pnpm-store/
+.nyc_output/
+.cache/
+.next/
+
+# Test output
+coverage/
+.jest/
