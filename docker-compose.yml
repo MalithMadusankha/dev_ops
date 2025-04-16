@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+
+  user-service:
+    build:
+      context: ./user-service
+    ports:
+      - "5001:5001"
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb+srv://dbuser:malith123@clusterdev.uocaz.mongodb.net/userdb?retryWrites=true&w=majority
+    restart: unless-stopped
+
+  product-service:
+    build:
+      context: ./product-service
+    ports:
+      - "5002:5002"
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb+srv://dbuser:malith123@clusterdev.uocaz.mongodb.net/productDB?retryWrites=true&w=majority
+    restart: unless-stopped
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+    ports:
+      - "5005:5005"
+    depends_on:
+      - user-service
+      - product-service
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped

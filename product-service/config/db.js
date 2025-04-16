@@ -1,0 +1,17 @@
+const mongoose = require("mongoose");
+
+const DATABASE_URL =
+  "mongodb+srv://dbuser:malith123@clusterdev.uocaz.mongodb.net/productDB?retryWrites=true&w=majority";
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI || DATABASE_URL, {
+      useNewUrlParser: true,
+    });
+    console.log("MongoDB Connected (User Service)");
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
+};
+module.exports = connectDB;
